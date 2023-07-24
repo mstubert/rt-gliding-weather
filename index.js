@@ -57,6 +57,7 @@ const server = http.createServer((req, res) => {
       //console.log(presentWeatherData());
       htmlData = presentWeatherData();
       htmlTextData = htmlTextStart + htmlData + htmlTextEnd;
+      res.writeHeader(200, { "Content-Type": "text/html" });
       res.end(htmlTextData);
     });
   }
