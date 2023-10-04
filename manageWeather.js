@@ -132,8 +132,15 @@ function presentWeatherData() {
   }
 
   const cuDate = new Date();
+  //tempHTML =
+  //tempHTML + `<p>` + "\tLast update at: " + cuDate.toString() + `</p>`;
+
   tempHTML =
-    tempHTML + `<p>` + "\tLast update at: " + cuDate.toString() + `</p>`;
+    tempHTML +
+    `<b style="color:orange;">` +
+    "\tLast update at: " +
+    cuDate.toString() +
+    `</b>`;
 
   return tempHTML;
 }
