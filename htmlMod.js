@@ -1,13 +1,16 @@
+//read static picture as file
 const fs = require("fs");
 const base = fs.readFileSync(`${__dirname}/drawingCloudFly5.png`);
 
 var htmlTextStart;
 var htmlTextEnd;
 
+//convert picture file into HTML text format
 const initPic = '<img src="data:image/jpeg;base64,';
 const convPic = Buffer.from(base).toString("base64");
 const endPic = '" height="80" width="80"/>';
 
+//static HTML content and Java Script functionality for weather data input form and page update
 var htmlText1 = `
 
 <!DOCTYPE html>

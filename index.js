@@ -1,3 +1,4 @@
+//import modules
 const http = require("http");
 const { htmlTextStart, htmlTextEnd } = require("./htmlMod");
 const { checkBody, transformBody, setBodyData } = require("./manageBody");
@@ -8,10 +9,12 @@ const {
   presentWeatherData,
 } = require("./manageWeather");
 
+//text data in HTML format
 var tempString = "";
 var htmlData = "";
 var htmlTextData = ``;
 
+//text data from body of POST request
 var curInp = "";
 
 const server = http.createServer((req, res) => {
@@ -19,6 +22,7 @@ const server = http.createServer((req, res) => {
   console.log(`${__dirname}`);
   /*var body = "";*/
 
+  //GET request triggers update and new presentation of weather data
   if (req.method == "GET") {
     console.log(req.method);
     res.writeHeader(200, { "Content-Type": "text/html" });
@@ -32,6 +36,7 @@ const server = http.createServer((req, res) => {
     res.end(output);
   }
 
+  //POST request triggers addition of new weather data, update and new presentation of weather data
   if (req.method == "POST") {
     console.log(req.method);
     req.on("data", function (data) {

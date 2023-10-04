@@ -1,4 +1,4 @@
-//global variables
+//global variables for each weather area
 var locData = {
   BYW: [],
   DOE: [],
@@ -30,16 +30,19 @@ var key;
 var i;
 var j;
 
+//presentation of averaged weather data
 var presentAvData = [];
 var cbSum;
 var crSum;
 var ccSum;
 
+//add new weather input to existing weather area data
 function addNewLocItem(data) {
   locData[data[0]].push(data);
   console.log(locData);
 }
 
+//manage update of weather data with respect to age of data
 function updateTimeLocData() {
   for (key in locData) {
     tempLength = locData[key].length;
@@ -60,6 +63,8 @@ function updateTimeLocData() {
   }
 }
 
+//manage update of weather data with respect to weather properties
+//averaging of data for each weather area
 function updateAverageLocData() {
   presentAvData.splice(0, presentAvData.length);
 
@@ -109,6 +114,7 @@ function updateAverageLocData() {
   return presentAvData;
 }
 
+//present weather data via HTML text format and indicate last update time
 function presentWeatherData() {
   let tempHTML = "";
   let tempStr = "";

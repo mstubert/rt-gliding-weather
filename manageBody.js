@@ -4,6 +4,7 @@ var lastItemTime = new Date();
 var i = 0;
 var j = 0;
 
+//index to weather area assignment
 var locData = {
   "01": "BYW",
   "02": "DOE",
@@ -29,6 +30,7 @@ var locData = {
   22: "THW",
   23: "UFN",
 };
+//index to cloud base assignment
 var cbData = {
   "01": "500",
   "02": "600",
@@ -57,6 +59,7 @@ var cbData = {
   25: "2900",
   26: "3000",
 };
+//index to climb rate assignment
 var crData = {
   "01": "0.5",
   "02": "1.0",
@@ -68,7 +71,7 @@ var crData = {
   "08": "4.0",
   "09": "4.5",
 };
-
+//index to cloud coverage assignment
 var ccData = {
   "01": "0",
   "02": "1",
@@ -81,6 +84,9 @@ var ccData = {
   "09": "8",
 };
 
+//check if new weather data input is valid
+//check if request comes from user submit or from automatic client request triggered by update
+//only user submits are valid weather data input
 function checkBody(dataString) {
   const currentDate = new Date();
   let timeDi = currentDate - lastItemTime;
@@ -110,6 +116,7 @@ function checkBody(dataString) {
   return validInpStatus;
 }
 
+//format weather input data for internal usage in data arrays
 function transformBody(dataString) {
   let arrBody = [];
   arrBody = dataString.split("&", 4);
@@ -131,6 +138,7 @@ function transformBody(dataString) {
   return numbArr;
 }
 
+//format and add time stamp to input weather data
 function setBodyData(nuArr) {
   let tempEntry;
   let presArr = [];
